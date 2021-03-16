@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.app {
+  max-width: 75rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--bg-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(1.3rem);
+  -webkit-backdrop-filter: blur(1.3rem);
+}
+
+.app__section {
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app__header {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+.app__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

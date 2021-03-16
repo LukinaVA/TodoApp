@@ -1,0 +1,49 @@
+.todo-list {
+  margin: 2rem 0;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.5rem;
+}
+
+.todo__part {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.todo__checkbox {
+  position: absolute;
+  left: -9999px;
+}
+
+.todo__content {
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: .5rem;
+    background-color: transparent;
+  }
+
+  span {
+    padding-left: 3rem;
+  }
+}
+
+.todo__color {
+  margin-right: 1rem;
+
+  padding: .5rem;
+}
+
+.todo__deleteBtn {
+
+}

@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  --text-color: rgb(255, 255, 255);
+  --bg-color: rgba(0, 0, 0, .5);
+  --btn-bg-color: rgba(0, 0, 0, .8);
+  --border-color: #89119f;
+
+  --body-font: "Poppins", sans-serif;
+}
+
+.light-theme {
+  --text-color: rgb(0, 0, 0);
+  --bg-color: rgba(255, 255, 255, .5);
+  --btn-bg-color: rgba(255, 255, 255, .8);
+  --border-color: #d77fe5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+html {
+  font-family: var(--body-font);
+  background-image: url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-5120x2880-1432.jpg);
+  background-size: cover;
+  background-position: center;
+  font-size: 15px;
+}
+
+body {
+  color: var(--text-color);
+  overflow: hidden;
+
+  &.light-theme {
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.45) 100%);
+      backdrop-filter: saturate(3);
+    }
+
+    .dark-light {
+      svg {
+        fill: transparent;
+        stroke: var(--text-color);
+      }
+    }
+  }
+}
+
+.dark-light {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--btn-bg-color);
+  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 3;
+  cursor: pointer;
+
+  svg {
+    width: 2rem;
+    flex-shrink: 0;
+    fill: #ffce45;
+    stroke: #ffce45;
+    transition: 0.5s;
+  }
+}
+
+.container {
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

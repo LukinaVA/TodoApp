@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Header from './components/header/Header';
+import TodoList from './components/todos/TodoList';
+import Footer from './components/footer/Footer';
+
+import './app.scss'
 
 function App() {
+    const changeTheme = () => {
+        document.body.classList.toggle('light-theme');
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='container'>
+          <div className='app'>
+              <div className='dark-light' onClick={changeTheme}>
+                  <svg viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                  </svg>
+              </div>
+              <section className='app__section'>
+                  <h2 className='app__header'>Todos</h2>
+                  <div className='app__body'>
+                      <Header/>
+                      <TodoList/>
+                      <Footer/>
+                  </div>
+              </section>
+          </div>
+      </div>
   );
 }
 
-export default App;
+export default App
