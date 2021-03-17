@@ -5,13 +5,15 @@ import {StatusFilters, colorFilterChanged} from '../filters/filtersSlice';
 import {availableColors, capitalize} from '../filters/colors';
 import {stateType, todoItemType} from '../../store';
 
+import './footer.scss';
+
 const RemainingTodos: React.FC<{count: number}> = (props) => {
     const suffix = props.count === 1 ? '' : 's';
 
     return (
-        <div className='todo-count'>
-            <h5>Remaining Todos</h5>
-            <strong>{props.count}</strong> item{suffix} left
+        <div className='footer__col'>
+            <h5 className='footer__title'>Todos</h5>
+            <strong className='footer__todos-num'>{props.count}</strong> item{suffix} left
         </div>
     )
 }
@@ -26,7 +28,7 @@ const StatusFilter: React.FC<statusFilterProps> = ({status, onChange}) => {
     const renderedFilters = Object.keys(StatusFilters).map((key) => {
         const value: string = StatusFilters[key];
         const handleClick = () => onChange(value);
-        const className: string = value === status ? 'selected' : '';
+        const className: string = value === status ? 'footer__btn footer__btn_selected' : 'footer__btn';
 
         return (
             <li key={value}>
@@ -38,9 +40,9 @@ const StatusFilter: React.FC<statusFilterProps> = ({status, onChange}) => {
     })
 
     return (
-        <div className='filters statusFilters'>
-            <h5>Filter by Status</h5>
-            <ul>{renderedFilters}</ul>
+        <div className='footer__col'>
+            <h5 className='footer__title'>Filter by Status</h5>
+            <ul className='footer__filters'>{renderedFilters}</ul>
         </div>
     )
 }
@@ -59,7 +61,7 @@ const ColorFilters: React.FC<colorFilterProps> = ({colors, onChange}) => {
         }
 
         return (
-            <label key={color}>
+            <label key={color} className={checked ? 'footer__color footer__color_checked' : 'footer__color'}>
                 <input
                     type='checkbox'
                     name={color}
@@ -67,7 +69,6 @@ const ColorFilters: React.FC<colorFilterProps> = ({colors, onChange}) => {
                     onChange={handleChange}
                 />
                 <span
-                    className='color-block'
                     style={{
                         backgroundColor: color,
                     }}
@@ -78,9 +79,9 @@ const ColorFilters: React.FC<colorFilterProps> = ({colors, onChange}) => {
     })
 
     return (
-        <div className='filters colorFilters'>
-            <h5>Filter by Color</h5>
-            <form className='colorSelection'>{renderedColors}</form>
+        <div className='footer__col'>
+            <h5 className='footer__title'>Filter by Color</h5>
+            <form className='footer__colors'>{renderedColors}</form>
         </div>
     )
 }
@@ -112,10 +113,10 @@ const Footer: React.FC = () => {
 
     return (
         <footer className='footer'>
-            <div className='actions'>
-                <h5>Actions</h5>
-                <button className='button' onClick={markAllCompleted}>Mark All Completed</button>
-                <button className='button' onClick={clearCompleted}>Clear Completed</button>
+            <div className='footer__col'>
+                <h5 className='footer__title'>Actions</h5>
+                <button className='footer__btn' onClick={markAllCompleted}>Mark All Completed</button>
+                <button className='footer__btn' onClick={clearCompleted}>Clear Completed</button>
             </div>
 
             <RemainingTodos count={todosRemaining} />

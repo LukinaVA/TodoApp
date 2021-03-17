@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 .app {
-  max-width: 75rem;
+  //position: absolute;
+  max-width: 65rem;
   width: 100%;
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, -50%);
 
   display: flex;
   justify-content: center;

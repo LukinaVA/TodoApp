@@ -19,8 +19,12 @@ const TodoListItem: React.FC<ITodoListItem> = ({id}) => {
 
     const dispatch = useDispatch();
 
-    const handleCompleteChanged = () => {
+    const handleCompleteChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({type: 'todos/todoToggled', payload: todo.id});
+        let label = e.target.parentElement;
+        if (label !== null) {
+            label.classList.toggle('todo__content_checked');
+        }
     }
 
     const handleColorChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -42,7 +46,7 @@ const TodoListItem: React.FC<ITodoListItem> = ({id}) => {
         <li>
             <div className='todo'>
                 <div className='todo__part'>
-                    <label className='todo__content'>
+                    <label className={completed ? 'todo__content todo__content_checked' : 'todo__content'}>
                         <input
                             className='todo__checkbox'
                             type='checkbox'
@@ -54,7 +58,7 @@ const TodoListItem: React.FC<ITodoListItem> = ({id}) => {
                 </div>
                 <div className='todo__part'>
                     <select
-                        className='todo__color'
+                        className='todo__color color-picker'
                         value={color}
                         style={{ color }}
                         onChange={handleColorChanged}
@@ -62,9 +66,7 @@ const TodoListItem: React.FC<ITodoListItem> = ({id}) => {
                         <option value=''> </option>
                         {colorOptions}
                     </select>
-                    <button className='todo__deleteBtn' onClick={handleDeleteBtn} >
-                        🞫
-                    </button>
+                    <span className='todo__deleteBtn' onClick={handleDeleteBtn}> </span>
                 </div>
             </div>
         </li>
