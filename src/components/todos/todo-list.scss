@@ -1,3 +1,5 @@
+@import '../../vars';
+
 .todo-list {
   margin: 2rem 0 0;
 
@@ -16,16 +18,19 @@
 }
 
 .todo {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
 
   font-size: 1.5rem;
 
-
+  @media #{$mobile} {
+    flex-direction: column;
+  }
 }
 
 .todo__part {
-  position: relative;
   display: flex;
   align-items: center;
 }
@@ -87,6 +92,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left: 3rem;
+
+    @media #{$mobile} {
+      max-width: 13rem;
+    }
   }
 }
 
@@ -130,5 +139,11 @@
 
   &:after {
     transform: rotate(-45deg);
+  }
+
+  @media #{$mobile} {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
