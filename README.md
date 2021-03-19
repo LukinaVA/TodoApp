@@ -1,4 +1,4 @@
-###### **TodoAPP**
+# TodoApp
 
 This application is made with following technology stack:
 * React
